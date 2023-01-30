@@ -12,6 +12,28 @@
     <meta name="reply-to" content="2605884507@qq.com">
     <link href="images/ico.png" rel="shortcut icon" type="image/x-icon">
     <link href="css.css" rel="stylesheet">
+    <script type="text/javascript">
+    function getMailtoUrl() {
+        var args = [];
+        if (typeof subject !== 'undefined') {
+            args.push('subject=' + encodeURIComponent('用户评论'));
+        }
+        var name = $("input[name='name']").val();
+        var iphone = $("input[name='iphone']").val();
+        var body = name +"\n"+iphone
+        if (typeof body !== 'undefined') {
+            args.push('body=' + encodeURIComponent(body))
+        }
+
+        var url = 'mailto:' + encodeURIComponent('service@kashuo.com');
+        if (args.length > 0) {
+            url += '?' + args.join('&');
+        }
+        console.log(url);
+        window.location = url;
+        return url;
+    }
+</script>
   </head>
   <body bgcolor="#25abb6" link="#1e62b3" alink="#333971" vlink="#1e62b3">
     <p class="size-big center">yangrou的主页</p>
@@ -99,7 +121,7 @@
       id：&emsp;&emsp;<input type="text" name="userid" size="20" placeholder="id"><br><br>
       留言：&emsp;<textarea name="liuyan" rows="15" cols="60" placeholder="留言"></textarea>
       <br><br>
-      <input type="submit" name="submit" value="提交">&emsp;<input type="reset" name="reset" value="重置">
+      <input type="button" name="submit" value="提交" οnclick="getMailtoUrl()">&emsp;<input type="reset" name="reset" value="重置">
     </form>
   </body>
 <html>
