@@ -114,6 +114,28 @@
     <h1 name="#5">杂谈</h1>
     <img src="images/image8.png">
     <hr>
+    <script type="text/javascript">
+    function getMailtoUrl() {
+        var args = [];
+        if (typeof subject !== 'undefined') {
+            args.push('subject=' + encodeURIComponent('用户评论'));
+        }
+        var name = $("input[name='name']").val();
+        var iphone = $("input[name='iphone']").val();
+        var body = name +"\n"+iphone
+        if (typeof body !== 'undefined') {
+            args.push('body=' + encodeURIComponent(body))
+        }
+
+        var url = 'mailto:' + encodeURIComponent('service@kashuo.com');
+        if (args.length > 0) {
+            url += '?' + args.join('&');
+        }
+        console.log(url);
+        window.location = url;
+        return url;
+    }
+    </script>
     <h1 name="#6">留言</h1>
     <form action="mailto:2605884507@qq.com" name="liuyan" enctype="text/plain">
       用户名：<input type="text" name="username" size="20" placeholder="用户名">
